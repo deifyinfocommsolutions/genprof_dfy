@@ -15,7 +15,8 @@ ynh_delete_file_checksum () {
 # Create a dedicated php-fpm config for php7.1
 #
 # usage: ynh_add_fpm_config
-ynh_add_php7.4_fpm_config () {
+
+ynh_add_php74_fpm_config () {
 	finalphpconf="/etc/php/7.4/fpm/pool.d/$app.conf"
 	ynh_backup_if_checksum_is_different "$finalphpconf"
 	sudo cp ../conf/php-fpm.conf "$finalphpconf"
@@ -41,7 +42,7 @@ ynh_add_php7.4_fpm_config () {
 # Remove the dedicated php-fpm config for php7.1
 #
 # usage: ynh_remove_fpm_config
-ynh_remove_php7.4_fpm_config () {
+ynh_remove_php74_fpm_config () {
 	ynh_secure_remove "/etc/php/7.4/fpm/pool.d/$app.conf"
 	ynh_secure_remove "/etc/php/7.4/fpm/conf.d/20-$app.ini" 2>&1
 	sudo systemctl reload php7.4-fpm

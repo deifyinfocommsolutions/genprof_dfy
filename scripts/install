@@ -139,8 +139,8 @@ ynh_print_info "Configuring php-fpm..."
 
 # Create a dedicated php-fpm config
 ynh_replace_string "__USER__" "$user" "../conf/php-fpm.conf"
-#ynh_add_php7.4-fpm_config
-ynh_add_fpm_config
+ynh_add_php7.4-fpm_config
+#ynh_add_fpm_config
 
 #=================================================
 # GENERIC FINALIZATION

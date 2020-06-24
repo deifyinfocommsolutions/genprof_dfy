@@ -26,6 +26,7 @@ domain=$(ynh_app_setting_get $app domain)
 path_url=$(ynh_app_setting_get $app path)
 final_path=$(ynh_app_setting_get $app final_path)
 db_name=$(ynh_app_setting_get $app db_name)
+db_user=$(ynh_app_setting_get $app db_name)user
 with_mysql=$(ynh_app_setting_get $app with_mysql)
 password=$(ynh_app_setting_get $app password)
 user=$(ynh_app_setting_get $app user)
@@ -62,8 +63,8 @@ ynh_restore_file "$final_path"
 if [ $with_mysql -eq 1 ]; then
     ynh_print_info "Restoring the mysql database..."
     db_pwd=$(ynh_app_setting_get $app mysqlpwd)
-    ynh_mysql_setup_db $db_name $db_name $db_pwd
-    ynh_mysql_connect_as $db_name $db_pwd $db_name < ./db.sql
+    ynh_mysql_setup_db $db_user $db_name $db_pwd
+    ynh_mysql_connect_as $db_user $db_pwd $db_name < ./db.sql
 fi
 
 #=================================================
